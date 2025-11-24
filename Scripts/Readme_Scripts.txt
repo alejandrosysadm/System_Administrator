@@ -1,0 +1,2 @@
+Repository with useful scripts for system administrators, both in Windows (PowerShell) and Linux (Bash).
+Includes task automation, monitoring, backups, user management, temporary file cleanup, and Azure administration.
