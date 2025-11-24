@@ -1,13 +1,13 @@
-# Par·metros de la App Registrada
-$SiteUrl     = "https://m365x12900168.sharepoint.com"  # URL completa del sitio
-$TenantId    = "015f244e-f2c5-4eaa-9b65-6b018b2fc56c"              # ID del tenant (GUID)
-$ClientId    = "01e03bdc-3d06-4b87-ab94-b5898e7234c2"              # ID de la app registrada
-$ClientSecret = "~Sg8Q~_j2bGNFLcr3RNDOMdNgyC8GHRgJqPJHbYz"         # Secreto de la app
+# Par√°metros de la App Registrada
+$SiteUrl     = ""  # URL completa del sitio
+$TenantId    = ""              # ID del tenant (GUID)
+$ClientId    = ""              # ID de la app registrada
+$ClientSecret = ""         # Secreto de la app
 
 
-# ConexiÛn correcta usando ClientId + Secret + TenantId
+# Conexi√≥n correcta usando ClientId + Secret + TenantId
 Connect-PnPOnline -Url $SiteUrl -ClientId $ClientId -ClientSecret $ClientSecret
-# Verificar la conexiÛn mostrando el tÌtulo del sitio
+# Verificar la conexi√≥n mostrando el t√≠tulo del sitio
 Get-PnPWeb | Select-Object Title
 
 
