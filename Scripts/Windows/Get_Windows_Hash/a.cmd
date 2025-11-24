@@ -1,0 +1,1 @@
+PowerShell -NoProfile -ExecutionPolicy Unrestricted -Command .\Get-WindowsAutoPilotInfo.ps1 -GroupTag Despliegue -OutputFile .\computers.csv -append

@@ -1,0 +1,11 @@
+Version de nuestro sistema operativo
+DISM /online /Get-CurrentEdition
+ 
+Versiones que podemos actualizar
+dism /online /get-targeteditions
+ 
+Actualizar a la versión Standard
+dism /online /set-edition:serverstandard /productkey:VDYBN-27WPP-V4HQT-9VMD4-VMK7H /accepteula
+ 
+Actualizar a la versión DataCenter
+dism /online /set-edition:serverdatacenter /productkey:WX4NM-KYWYW-QJJR4-XV3QB-6VM33 /accepteula

@@ -1,0 +1,1 @@
+net use \\10.42.1.20 /user:USER PASSWORD /persistent:yes
