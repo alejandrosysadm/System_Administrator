@@ -12,6 +12,6 @@ Get-PnPWeb | Select-Object Title
 
 
 
-Connect-PnPOnline m365x12900168.sharepoint.com -ClientId 01e03bdc-3d06-4b87-ab94-b5898e7234c2 -Tenant m365x12900168.onmicrosoft.com -Thumbprint 1CE9E7871F038CC5B4AE4F7A48B6B85864A30C05
+Connect-PnPOnline {} -ClientId {} -Tenant {} -Thumbprint {}
 
  
