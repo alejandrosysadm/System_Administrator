@@ -20,7 +20,7 @@ apt install -y \
   btop neofetch fastfetch bat duf eza fzf tldr ncdu \
   vnstat unzip curl wget build-essential libpcre3-dev \
   libsqlite3-dev libncursesw5-dev libreadline-dev libbz2-dev zlib1g-dev \
-  libunistring-dev libcurl4-openssl-dev pkg-config
+  libunistring-dev libcurl4-openssl-dev pkg-config libpcre2-dev
 
 # =========================================================
 # Instalar lnav desde fuente (para ARM64 / ARMHF)
