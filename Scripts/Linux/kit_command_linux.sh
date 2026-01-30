@@ -18,29 +18,7 @@ apt upgrade -y
 echo "📦 Instalando herramientas esenciales..."
 apt install -y \
   btop neofetch fastfetch bat duf eza fzf tldr ncdu \
-  vnstat unzip curl wget build-essential libpcre3-dev \
-  libsqlite3-dev libncursesw5-dev libreadline-dev libbz2-dev zlib1g-dev \
-  libunistring-dev libcurl4-openssl-dev pkg-config libpcre2-dev
-
-# =========================================================
-# Instalar lnav desde fuente (para ARM64 / ARMHF)
-# =========================================================
-echo "📜 Instalando lnav..."
-TMP_DIR=$(mktemp -d)
-cd $TMP_DIR
-
-# Descargar fuente
-curl -LO https://github.com/tstack/lnav/releases/download/v0.13.2/lnav-0.13.2.tar.gz
-tar xvf lnav-0.13.2.tar.gz
-cd lnav-0.13.2
-
-# Compilar e instalar
-./configure
-make
-make install
-
-cd ~
-rm -rf $TMP_DIR
+  vnstat unzip curl wget
 
 # =========================================================
 # Configuración de bashrc para el usuario que ejecuta sudo
