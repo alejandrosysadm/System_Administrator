@@ -42,19 +42,16 @@ if [ -t 1 ]; then
     echo -e "\e[1;36mbat\e[0m        → Cat con colores y resaltado de sinta>
     echo -e "\e[1;36mduf\e[0m        → Visualización bonita de discos."
     echo -e "\e[1;36meza\e[0m        → Listado de archivos con colores y ár>
-    echo -e "\e[1;36mfzf\e[0m        → Selector interactivo de archivos."
     echo -e "\e[1;36mtldr\e[0m       → Versiones resumidas de comandos."
     echo -e "\e[1;36mncdu\e[0m       → Analizador de uso de disco."
     echo -e "\e[1;36mvnstat\e[0m     → Estadísticas de red."
-    echo -e "\e[1;36mlnav\e[0m       → Visualización de logs en tiempo real>
     echo ""
     echo -e "\e[1;33m💡 Aliases útiles:\e[0m"
     echo -e "ll    → eza -lah --icons"
     echo -e "lt    → eza --tree --level=2"
     echo -e "df    → duf"
-    echo -e "cat   → bat"
-    echo -e "fcd   → cd $(find . -type d | fzf)"
-    echo -e "fedit → nano $(fzf)"
+    echo -e "cat   → batcat"
+    echo -e "find  → rg"
     echo ""
     echo -e "\e[1;32m✅ Listo! Usa estos comandos y aliases para aprovechar>
 fi
