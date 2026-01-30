@@ -17,7 +17,7 @@ apt upgrade -y
 
 echo "📦 Instalando herramientas esenciales..."
 apt install -y \
-  btop neofetch fastfetch bat duf eza fzf tldr ncdu \
+  btop neofetch fastfetch bat duf eza tldr ncdu \
   vnstat unzip curl wget
 
 # =========================================================
@@ -38,9 +38,8 @@ fi
 alias ll='eza -lah --icons'
 alias lt='eza --tree --level=2'
 alias df='duf'
-alias cat='bat'
-alias fcd='cd $(find . -type d | fzf)'
-alias fedit='nano $(fzf)'
+alias cat='batcat'
+alias find='rg'
 EOF
 
 chown $SUDO_USER:$SUDO_USER $BASHRC
