@@ -1,0 +1,68 @@
+# ───────────────────────────────────────────────
+# Auditoría de permisos NTFS con soporte de rutas largas y caracteres especiales
+# ───────────────────────────────────────────────
+
+# Ruta raíz profunda
+$RootPath = "H:\"  #Ruta que hay que cambiar!!!!!
+
+# CSV de salida
+$OutCsv = "C:\Temp\NTFS_$($env:COMPUTERNAME)_$(Get-Date -f yyyyMMdd_HHmm).csv"
+
+# Función recursiva para obtener carpetas usando .NET y rutas largas
+function Get-LongFolders([string]$path) {
+    $folders = @()
+    if (-not [System.IO.Directory]::Exists($path)) { return $folders }
+    try {
+        $subdirs = [System.IO.Directory]::GetDirectories($path)
+        $folders += $subdirs
+        foreach ($dir in $subdirs) {
+            $folders += Get-LongFolders $dir
+        }
+    }
+    catch {
+        # Ignorar errores y continuar
+    }
+    return $folders
+}
+
+# Obtener todas las carpetas (incluyendo la raíz)
+$allFolders = Get-LongFolders $RootPath
+$allFolders = @($RootPath) + $allFolders
+
+# Recolectar permisos usando .NET para rutas largas
+$results = foreach ($f in $allFolders) {
+    if (-not [System.IO.Directory]::Exists($f)) { continue }
+    try {
+        $dirInfo = New-Object System.IO.DirectoryInfo($f)
+        $acl = $dirInfo.GetAccessControl()
+        foreach ($ace in $acl.GetAccessRules($true, $true, [System.Security.Principal.NTAccount])) {
+            [pscustomobject]@{
+                Server            = $env:COMPUTERNAME
+                Path              = $f
+                Identity          = $ace.IdentityReference.Value
+                AccessType        = $ace.AccessControlType
+                Rights            = $ace.FileSystemRights
+                IsInherited       = $ace.IsInherited
+                InheritanceFlags  = $ace.InheritanceFlags
+                PropagationFlags  = $ace.PropagationFlags
+            }
+        }
+    }
+    catch {
+        [pscustomobject]@{
+            Server            = $env:COMPUTERNAME
+            Path              = $f
+            Identity          = ""
+            AccessType        = "ERROR"
+            Rights            = ""
+            IsInherited       = ""
+            InheritanceFlags  = ""
+            PropagationFlags  = ""
+            ErrorMessage      = $_.Exception.Message
+        }
+    }
+}
+
+# Exportar CSV
+$results | Export-Csv -NoTypeInformation -Encoding UTF8 -Path $OutCsv
+Write-Host "✔ Exportado correctamente a: $OutCsv" -ForegroundColor Green
